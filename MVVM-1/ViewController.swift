@@ -9,9 +9,26 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var secondNameLabel: UILabel!
+    @IBOutlet var ageLabel: UILabel!
+    
+    var profile: Profile? {
+        didSet {
+            guard let profile = profile else { return }
+            
+            self.nameLabel.text = profile.name
+            self.secondNameLabel.text = profile.secondName
+            self.ageLabel.text = "\(profile.age)"
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+       
+        profile = Profile(name: "Artur",
+                          secondName: "Dokhno",
+                          age: 29)
     }
 
 
